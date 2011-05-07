@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  type: MyString
+  price: MyString
+  negotiable: MyString
+  description: MyText
+  address: MyText
+
+two:
+  name: MyString
+  type: MyString
+  price: MyString
+  negotiable: MyString
+  description: MyText
+  address: MyText

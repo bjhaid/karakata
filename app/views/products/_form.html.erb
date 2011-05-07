@@ -1,0 +1,51 @@
+
+<%= form_for(@product, :html => { :multipart => true }) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.select (:type, ['Automobile', 'Clothing', 'Computer/Computer Accesories', 'Consumables', 'Electronics', 'Others']) %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :negotiable %><br />
+    <%= f.text_field :negotiable %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :phone_no %><br />
+    <%= f.text_field :phone_no %>
+  </div>  
+  <div>
+    <%= f.label :photo, "Photo" %>  
+    <%= f.file_field :photo %>  
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

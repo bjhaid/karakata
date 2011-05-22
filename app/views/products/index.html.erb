@@ -1,36 +1,51 @@
-<h1>Listing products</h1>
+<%= render 'search' %>
+
+<h3><%= link_to 'Click to Post a new Product', new_product_path %></h3>
+<%= will_paginate @products %>
+<h3>Product Listing</h3>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Price</th>
-    <th>Negotiable</th>
-    <th>Description</th>
-    <th>Address</th>
-    <th>Phone Number</th>
-    <th></th>
-    <th></th>
-    <th></th>
+  <tr align="left">
+    <th>Product name</th>
+    <th>Category</th>
+    <th>Posted by</th>
+    <th>Posted at</th>
+    <th>Click on image to enlarge</th>
   </tr>
 
 <% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.type %></td>
-    <td><%= product.price %></td>
-    <td><%= product.negotiable %></td>
-    <td><%= product.description %></td>
-    <td><%= product.address %></td>
-    <td><%= product.phone_no %></td>
-    <td><%= image_tag product.photo.url(:thumb) %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+  <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td width="25%"><b><%= link_to product.name, product %></b></td>
+    <td width="20%"><%= product.category %></td>
+    <td width="10%"></td>
+    <td width="15%">
+      <% a= ((product.created_at - Time.now)/3600).abs.to_int %>
+      <% if a > 24 %>
+        <% b = a/24 %>
+        <% c = "#{b}" + " days, " + "#{a%24}" + " hours ago"%>
+      <% else %>
+        <% b = a %>
+        <% c = "#{b}" + " hours ago" %>
+      <% end %>
+      <p>Posted <%= c %></td>
+
+    <div class="magnify">
+      <td width="30%"><%= image_tag product.photo.url(:thumb) %> </td>
+    </div>
+    <% if can? :update, @product %>
+      <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <% end %>
+    <% if can? :destroy, @product %>
+      <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
+<%= will_paginate @products %>
+
 <br />
 
-<%= link_to 'New Product', new_product_path %>
+
+
+

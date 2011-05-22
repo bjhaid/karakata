@@ -1,0 +1,30 @@
+<h1><%= @user.username.capitalize %></h1>
+<h3><%= link_to 'Post a new Product', new_product_path %></h3>
+<% if  @product.nil? %>
+<%= @user.username.capitalize %>
+<% else %>
+<% @product.each do |product| %>
+  <table>
+  <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <p><b><%= link_to product.name, product %></b></p>
+    <p><%= product.category %></p>
+    <p></p>
+    <p><%= product.created_at.asctime%></p>
+      <% a= ((product.created_at - Time.now)/3600).abs.to_int %>
+      <% if a > 24 %>
+        <% b = a/24 %>
+        <% c = "#{b}" + " days, " + "#{b%24}" + " hours ago" %>
+      <% else %>
+        <% b = a %>
+        <% c = "#{b}"%>
+      <% end %>
+      <p>Posted <%= c %></td>
+    <div class="magnify">
+      <p><%= image_tag product.photo.url(:thumb) %> </p>
+    </div>
+   </tr>
+  </table>
+<% end %>
+<% end %>
+
+

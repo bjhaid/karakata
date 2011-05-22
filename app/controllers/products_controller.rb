@@ -1,8 +1,12 @@
 class ProductsController < ApplicationController
+  #load_and_authorize_resource
+  #before_filter :authenticate_user!, :except => [:index, :show] 
   # GET /products
   # GET /products.xml
   def index
-    @products = Product.all
+    @products = Product.find(:all, :order => "id DESC").paginate(:per_page => 10, :page => params[:page])
+    @search = Product.search(params[:search])  
+    #@products = @search.all  
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +18,7 @@ class ProductsController < ApplicationController
   # GET /products/1.xml
   def show
     @product = Product.find(params[:id])
+    @photos = @product.assets
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +30,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
+    5.times { @product.assets.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +41,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    5.times { @product.assets.build }
   end
 
   # POST /products
@@ -81,7 +88,4 @@ class ProductsController < ApplicationController
     end
   end
   
-  def search
-    @product = Product.search
-  end
 end

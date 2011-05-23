@@ -1,4 +1,8 @@
 source 'http://rubygems.org'
+<<<<<<< HEAD
+=======
+
+>>>>>>> ad638083c1992b75d72ea9b0f55d6e731af7e20f
 gem 'rails', '3.0.6.rc2'
 
 # Bundle edge Rails instead:
@@ -7,6 +11,7 @@ gem 'rails', '3.0.6.rc2'
 gem 'sqlite3'
 gem 'warden'
 gem 'devise'
+<<<<<<< HEAD
 gem 'paperclip'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'jquery-rails'
@@ -15,6 +20,14 @@ gem 'cancan'
 gem 'meta_search'
 gem 'will_paginate'
 #gem 'client_side_validations'
+=======
+gem 'geokit'
+gem 'geokit-rails'
+gem 'paperclip'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'jquery-rails'
+gem 'client_side_validations'
+>>>>>>> ad638083c1992b75d72ea9b0f55d6e731af7e20f
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -38,4 +51,7 @@ gem 'will_paginate'
 # group :development, :test do
 #   gem 'webrat'
 # end
+<<<<<<< HEAD
 gem "mocha", :group => :test
+=======
+>>>>>>> ad638083c1992b75d72ea9b0f55d6e731af7e20f

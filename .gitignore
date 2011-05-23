@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 .bundle
 db/*.sqlite3
 log/*.log
 tmp/
+=======
+vendor/
+tmp/
+log/
+>>>>>>> ad638083c1992b75d72ea9b0f55d6e731af7e20f

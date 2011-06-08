@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20110529153133) do
     t.string   "phone_no"
     t.integer  "user_id"
     t.string   "state"
-    t.string   "posted_by"
   end
 
   create_table "relationships", :force => true do |t|
@@ -81,11 +80,6 @@ ActiveRecord::Schema.define(:version => 20110529153133) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|

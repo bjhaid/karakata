@@ -1,6 +1,6 @@
 class CreateInteractions < ActiveRecord::Migration
   def self.up
-    drop_table :interactions do |t|
+    create_table :interactions do |t|
       t.integer :user_id
       t.integer :ref_id
       t.string :user_type

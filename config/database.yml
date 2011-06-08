@@ -2,10 +2,10 @@
 #   gem install sqlite3
 development:
   adapter: mysql
-  user: roomysqlt
+  user: root
   password: notmoor
   host: 127.0.0.1
-  database: karakata
+  database: test
   pool: 5
   timeout: 5000
 

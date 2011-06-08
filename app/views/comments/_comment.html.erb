@@ -1,0 +1,12 @@
+<div class="comment" data-time="<%= comment.created_at.to_i %>">
+  <%= comment.comment %><br>
+  <% if comment.user_id? %>
+    Posted by: <i><%= comment.user.username.capitalize %></i><br>
+
+  <% else %>
+    <font color='red'><i>Posted by Guest</i></font>
+  <% end %>
+  <em>on <%= comment.created_at.strftime('%b %d, %Y at %I:%M %p') %></em>
+  <br>
+</div>
+

@@ -1,0 +1,25 @@
+<h3>Product Search</h3>
+
+<%= form_for @search do |f| %>
+  <table >
+    <tr cellspacing = '10'>
+      <td> <%= f.label :name_contains, "Product name" %></td>
+      <td> <%= f.text_field :name_contains %></td>
+      <td width = '20'></td>
+      <td><%= f.label :category_equals, "Category" %></td>
+      <td><%= f.select(:category_equals, ['Automobile', 'Clothing', 'Computer/Computer Accesories', 'Consumables', 'Electronics', 'Pets', 'Real-Estate', 'Others'], :include_blank => true) %></td>
+    </tr>
+
+    <tr>
+      <td><%= f.label :address_contains, "City" %></td>
+      <td><%= f.text_field :address_contains %></td>
+      <td></td>
+
+      <td><%= f.label :state_equals, "State" %></td>
+      <td><%= f.select(:state_equals, %w[Abia Adamawa Akwa-Ibom Anambra Bauchi Bayelsa Benue Borno Cross River Delta Ebonyi Edo Ekiti Enugu FCT Gombe Imo Jigawa Kaduna Kano Katsina Kebbi Kogi Kwara Lagos Nasarawa Niger Ogun Ondo Osun Oyo Plateau Rivers Sokoto Taraba Yobe Zamfara], :include_blank => true)  %></td>
+    </tr> 
+  </table>
+  <%= f.submit "Search" %>
+ <% end %>
+
+

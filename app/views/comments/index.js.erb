@@ -1,0 +1,5 @@
+<% unless @comments.empty? %>
+$("#comments").append("<%=raw escape_javascript(render(@comments)) %>");
+$("#product h2").text($(".comment").length + " comments");
+<% end %>
+

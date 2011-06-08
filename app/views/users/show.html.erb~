@@ -1,0 +1,53 @@
+<div id="userHead">
+  
+  <h1><%= @user.username.capitalize %></h1><br>
+  (<%=pluralize( @product.count, "product")%>)
+<%= render 'follow_form' if user_signed_in? %>
+<%= render 'shared' %></br>
+</ br>
+a
+
+</div>
+<hr>
+<div id ="container">
+<% if user_signed_in? %>
+      <h3><%= link_to 'Post a new Product', new_product_path %></h3>
+<% end %>
+
+<% if  @product.nil? %>
+<%= @user.username.capitalize %>
+<% else %>
+<% @product.each do |product| %>
+  <table>
+  <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <p><b><%= link_to product.name, product %></b></p>
+    <p><%= product.category %></p>
+    <p></p>
+    <p><%= product.created_at.asctime%></p>
+      <% a= ((product.created_at - Time.now)/3600).abs.to_int %>
+      <% if a > 24 %>
+        <% b = a/24 %>
+        <% c = pluralize(b, "day") + " " + pluralize(a%24, "hour") + " ago" %>
+      <% else %>
+        <% b = a %>
+        <% c = "#{b}"%>
+      <% end %>
+      <p>Posted <%= c %>
+      <% if user_signed_in? %>
+          <%= link_to 'Edit', edit_product_path(product) %>
+      <% end %>
+
+    </td>
+
+    <div class="magnify">
+      <p><%= image_tag(product.photo.url(:thumb), :mouseover => product.photo.url(:large), :alt => "") %> </p>
+    </div>
+    <%= facebook_like %>
+   </tr>
+ </table>
+ <hr>
+<% end %>
+<% end %>
+</div>
+
+

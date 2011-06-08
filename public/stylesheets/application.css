@@ -1,0 +1,141 @@
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+  margin-right: 280px;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.clear {
+  clear: both;
+}
+
+#leftmenu {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 106%;
+width: 115px;
+padding: 0 0 5px 0;
+margin: 0;
+}
+
+#leftmenu ul {
+list-style: none;
+margin: 0;
+padding: 0;
+border: none;
+}
+#leftmenu ul li {
+margin: 0;
+padding: 0;
+}
+#leftmenu ul li a {
+font-size: 90%;
+display: block;
+border-bottom: 1px dashed #d3d3d3;
+margin:0;
+padding: 4px;
+text-decoration: none;
+color: #d3d3d3;
+width:120px;
+}
+
+#leftmenu ul li a:hover, #vertmenu ul li a:focus {
+color: #000000;
+background-color: #d3d3d3;
+}
+#top
+{ background: url(../images/top_bg.jpg) repeat-x;
+  height: 110px;
+  font-size: 170%;
+  font-weight: bold;
+  list-style: none;
+  color: white;
+  
+}
+#top ul {
+list-style: none;
+margin: 0;
+padding: 10;
+border: none;
+}
+#top ul li a {
+font-size: 150%;
+display: block;
+margin:0;
+padding: 7px;
+text-decoration: none;
+color: white;
+}
+
+
+#rightmenu {
+font-family:  Verdana, Arial, Helvetica, sans-serif;
+font-size: 78%;
+color: #d3d3d3;
+width: 115px;
+}
+#title {
+background: url(../images/title.png) no-repeat right;
+text-align: center;
+width: 100%;}
+.list-line-even {
+background-color: #d3d3d3;
+}
+.list-line-even {
+background-color: #c8dde5;
+}
+#commentBody {
+  font-size: 12px;
+  background-color: #c8dde5;
+  padding: 0 20px;
+  width: 700px;
+  
+}
+.submitButton {
+background-color: #a48787;
+width: 60px;
+font-size: 70%;
+}
+#head {
+background-color: #c8dde5;
+padding: 5px 5px 5px 15px;
+height: 50px;
+}
+#search {
+background-color: #c8dde5;
+padding: 5px 5px 5px 15px;
+}
+#newProduct {
+background-color: #a48787;
+height: 50px;
+font-size: 120%;
+padding: 5px 5px 5px 15px;
+font-weight: bold;
+color: #fff;
+}
+#container {
+padding: 5px 5px 5px 15px;
+}
+#userHead {
+background-color: #c8dde5;
+padding: 5px 5px 5px 15px;
+height: 100px;
+text-shadow: 4px 4px 5px #999;
+ }
+#messageBoard {
+height: 100px;
+width: 600px;
+color: white;
+}
+
+
+
+

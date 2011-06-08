@@ -1,0 +1,32 @@
+<table width="100%">
+  <tr>
+    <td valign="top" width="15%">
+      <h3><%= @title %></h3>  
+      <p><% unless @users.empty? %>
+        <ul class="users">
+        </ul>
+        <%= will_paginate @users %>
+      <% end %>
+    </td>
+    <td class="sidebar round">
+
+     <p></p>    
+     <p></p>
+     <p></p>
+     <p></p>
+     <p>
+      <% unless @users.empty? %>
+        <% @users.each do |user| %>
+          <%= link_to user.username.capitalize, user %>
+          <% unless user.products.empty? %>
+  
+            has just posted <%= link_to user.products.last.name, :controller => "products", :action => "show", :id => user.products.last.id %>
+
+          <% end %>
+        <% end %>
+      <% end %>
+      </p>
+    </td>
+  </tr>
+</table>
+

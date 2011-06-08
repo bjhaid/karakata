@@ -1,0 +1,41 @@
+<%= will_paginate @products %>
+<table cellpadding = '10'>
+  <tr align="left">
+    <th>Product name</th>
+    <th>Category</th>
+    <th>Posted by</th>
+    <th>Posted at</th>
+    <th>State</th>
+    <th>Move cursor on image to enlarge</th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td width="20%"><b><%= link_to product.name, product %></b></td>
+    <td width="10%"><%= product.category %></td>
+    <td width="15%">
+      <% if product.user_id? %>
+        <%= link_to User.find(product.user_id).username.capitalize, {:controller => "users", :action => "show", :id => product.user_id} %></td>
+    <% else %>
+      Guest
+    <% end %>
+    <td width="20%">
+      <p><%= product.created_at.to_s(:long) %></p>
+      <% a= ((product.created_at - Time.now)/3600).abs.to_int %>
+      <% if a > 24 %>
+        <% b = a/24 %>
+        <% c = pluralize(b, "day") + " " + pluralize(a%24, "hour") + " ago"%>
+      <% else %>
+        <% b = a %>
+        <% c = pluralize(b, "hour") + " ago" %>
+      <% end %>
+      <%= c %>
+    </td>
+
+    <td width="10%"> <%= product.state %></td>
+    <td width="15%"><%= image_tag(product.photo.url(:thumb), :mouseover => product.photo.url(:large), :alt => "") %></td>
+  </tr>
+<% end %>
+</table>
+
+

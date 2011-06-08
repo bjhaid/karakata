@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="google-site-verification" content="hEXK_xpNaegHuuEE3-y12CmAxkWpYSEQFJTBGbW838o" />
+  <title>Karakata - <%= @title ||= 'The Online MarketPlace' %> </title>
+  <link rel="shortcut icon" href="/images/title.png" />
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+</head>
+<body bgcolor="lightGray">
+<table height="1000" width="100%" bgcolor="white">
+  <tbody align="left" valign="top">
+    <tr>
+      <td colspan="3" height="10%" bgcolor="white" align="left">
+        <div id="top">
+            <%= image_tag("/images/lg.png", :size => "517x100", :align => "left") %>
+            Register to:<br>
+            <br>
+            <ul>
+              <li>Own a page to yourself (e.g. www.karakata.heroku.com/bjhaid)</li>
+              <li>Get to follow a seller or get your buyers to follow you</li>
+            </ul>
+        </div>
+        <div align = right>
+          <% if user_signed_in? %>
+            Welcome<b> <%= current_user.username.capitalize %></b>. Not you?
+            <%= link_to "Sign out", destroy_user_session_path %>
+          <% else %>
+            <%=  link_to "Register", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>.
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td width="115" align="left" bgcolor="black">
+        <div id="leftmenu"> 
+          <ul>
+            <li><%= link_to "Home", root_url %></li>
+            <li><%= link_to "Post Product", new_product_path %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "My Page", { :controller => "users", :action => "show", :id => current_user.id} %></li>
+              <li><%= link_to "Logout", destroy_user_session_path %></li>
+            <% else %>
+              <li><%= link_to "Login", new_user_session_path %></li>
+              <li><%= link_to "Register", new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </td>
+      <td width="770" height="85%" bgcolor="#d3d3d3" valign="top">
+        <div id="layout">
+           <p class="notice"><%= notice %></p>
+           <p class="alert"><%= alert %></p>
+           <%= yield %><%= yield :head %>
+
+        </div>
+     </td>
+  
+  <td width="115" bgcolor="Black" >
+    <div id="rightmenu">
+
+    </div>
+    </td>
+
+    </tr>
+  </tbody>
+</table>
+
+</body>
+
+      
+</html>

@@ -1,0 +1,74 @@
+<div id ="head">
+  <h1><%= @title = @product.name.capitalize %></h1>
+</div>
+<hr>
+<div id='product' style="overflow:hidden;" data-id="<%= @product.id %>">
+<table cellspacing = '15' width = '770' style="word-break:break-word; table-layout:fixed">
+<tr>
+  <td width = '170'>Product Name:</td>
+  <td width = '600'><%= @product.name %></td>
+</tr>
+
+<tr>
+  <td>Category:</td>
+  <td><%= @product.category %></td>
+</tr>
+
+<tr>
+  <td>Price:</td>
+  <td><%= @product.price %> (<%= @product.negotiable %>)</td>
+</tr>
+
+<tr>
+  <td>Description:</td>
+  <td><%= @product.description %></td>
+</tr>
+
+<tr>
+  <td>Address:</td>
+  <td><%= @product.address %></td>
+</tr>
+<tr>
+  <td>Phone no:</td>
+  <td><%= @product.phone_no %></td>
+</tr>
+<tr>
+  <td></td>
+  <td><%= render '/comments/form' %>
+    <div id ="commentBody">
+      <% unless @product.comments.empty? %>
+        <h4><%= pluralize(@product.comments.size, 'comment') %></h4>
+        <div id ="comments">
+          <%= render @product.comments %>
+        </div>
+        
+        <% end %>
+     </div>
+   </td>
+ </tr>
+</table>
+</div>
+
+<div id="container">
+  
+  <%= image_tag(@product.photo.url(:thumb), :mouseover => @product.photo.url(:large), :alt => "No image was posted for this product") %><br>
+
+<% if @photos.nil? %>
+  <br>
+<% else %>
+  <% @photos.each do |photo|  %>
+    <% a = "/system/images/" + "#{photo.id}" + "/thumb/" + "#{photo.image_file_name.to_s}" %>
+    <% b = "/system/images/" + "#{photo.id}" + "/large/" + "#{photo.image_file_name.to_s}" %>
+    <%= image_tag(a, :mouseover => b) %> <br>
+  <% end %>
+<% end %>
+<br>
+
+
+<% if @product.user.nil? %>
+<% else %>
+  <%= link_to 'Click to see more products by this user', @product.user %>
+<% end %>
+<%= facebook_like %>
+<%= link_to 'Back', products_path %><br>
+</div>
